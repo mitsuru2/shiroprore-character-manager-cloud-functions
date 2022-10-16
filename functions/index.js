@@ -96,6 +96,7 @@ exports.logUsersCreateEvent = functions.region('asia-northeast1').firestore.docu
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logUsersDeleteEvent = functions.region('asia-northeast1').firestore.document('/Users/{documentId}').onDelete((snap, context) => {
@@ -107,6 +108,7 @@ exports.logUsersDeleteEvent = functions.region('asia-northeast1').firestore.docu
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -177,6 +179,7 @@ exports.logAbilitiesCreateEvent = functions.region('asia-northeast1').firestore.
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logAbilitiesDeleteEvent = functions.region('asia-northeast1').firestore.document('/Abilities/{documentId}').onDelete((snap, context) => {
@@ -188,6 +191,7 @@ exports.logAbilitiesDeleteEvent = functions.region('asia-northeast1').firestore.
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -234,6 +238,7 @@ exports.logCharacterTagsCreateEvent = functions.region('asia-northeast1').firest
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logCharacterTagsDeleteEvent = functions.region('asia-northeast1').firestore.document('/CharacterTags/{documentId}').onDelete((snap, context) => {
@@ -245,6 +250,7 @@ exports.logCharacterTagsDeleteEvent = functions.region('asia-northeast1').firest
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -355,6 +361,7 @@ exports.logCharactersCreateEvent = functions.region('asia-northeast1').firestore
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logCharactersDeleteEvent = functions.region('asia-northeast1').firestore.document('/Characters/{documentId}').onDelete((snap, context) => {
@@ -366,6 +373,7 @@ exports.logCharactersDeleteEvent = functions.region('asia-northeast1').firestore
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -420,6 +428,7 @@ exports.logFacilitiesCreateEvent = functions.region('asia-northeast1').firestore
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logFacilitiesDeleteEvent = functions.region('asia-northeast1').firestore.document('/Facilities/{documentId}').onDelete((snap, context) => {
@@ -431,6 +440,7 @@ exports.logFacilitiesDeleteEvent = functions.region('asia-northeast1').firestore
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -477,6 +487,7 @@ exports.logIllustratorsCreateEvent = functions.region('asia-northeast1').firesto
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logIllustratorsDeleteEvent = functions.region('asia-northeast1').firestore.document('/Illustrators/{documentId}').onDelete((snap, context) => {
@@ -488,6 +499,7 @@ exports.logIllustratorsDeleteEvent = functions.region('asia-northeast1').firesto
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -534,6 +546,7 @@ exports.logVoiceActorsCreateEvent = functions.region('asia-northeast1').firestor
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logVoiceActorsDeleteEvent = functions.region('asia-northeast1').firestore.document('/VoiceActors/{documentId}').onDelete((snap, context) => {
@@ -545,6 +558,7 @@ exports.logVoiceActorsDeleteEvent = functions.region('asia-northeast1').firestor
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
 // ==============================================================================
@@ -599,6 +613,7 @@ exports.logWeaponsCreateEvent = functions.region('asia-northeast1').firestore.do
     updatedBy: newData.updatedBy,
     data: newData,
   });
+  return true;
 });
 
 exports.logWeaponsDeleteEvent = functions.region('asia-northeast1').firestore.document('/Weapons/{documentId}').onDelete((snap, context) => {
@@ -610,5 +625,24 @@ exports.logWeaponsDeleteEvent = functions.region('asia-northeast1').firestore.do
     docId: context.params.documentId,
     data: deleteData,
   });
+  return true;
 });
 
+// ==============================================================================
+// Cloud Storage
+//
+exports.logStorageFinalizeEvent = functions.region('asia-northeast1').storage.object().onFinalize((metadata) => {
+  functions.logger.log({
+    operation: 'Finalize',
+    metadata: metadata,
+  });
+  return true;
+});
+
+exports.logStorageDeleteEvent = functions.region('asia-northeast1').storage.object().onDelete((metadata) => {
+  functions.logger.log({
+    operation: 'Delete',
+    metadata: metadata,
+  });
+  return true;
+});
