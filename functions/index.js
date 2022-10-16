@@ -72,7 +72,7 @@ exports.logUsersUpdateEvent = functions.region('asia-northeast1').firestore.docu
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> Users >> ${context.params.documentId}`, {
     collection: 'Users',
     operation: 'Update',
     docId: context.params.documentId,
@@ -88,7 +88,7 @@ exports.logUsersUpdateEvent = functions.region('asia-northeast1').firestore.docu
 exports.logUsersCreateEvent = functions.region('asia-northeast1').firestore.document('/Users/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> Users >> ${context.params.documentId}`, {
     collection: 'Users',
     operation: 'Create',
     docId: context.params.documentId,
@@ -102,7 +102,7 @@ exports.logUsersCreateEvent = functions.region('asia-northeast1').firestore.docu
 exports.logUsersDeleteEvent = functions.region('asia-northeast1').firestore.document('/Users/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> Users >> ${context.params.documentId}`, {
     collection: 'Users',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -155,7 +155,7 @@ exports.logAbilitiesUpdateEvent = functions.region('asia-northeast1').firestore.
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> Abilities >> ${context.params.documentId}`, {
     collection: 'Abilities',
     operation: 'Update',
     docId: context.params.documentId,
@@ -171,7 +171,7 @@ exports.logAbilitiesUpdateEvent = functions.region('asia-northeast1').firestore.
 exports.logAbilitiesCreateEvent = functions.region('asia-northeast1').firestore.document('/Abilities/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> Abilities >> ${context.params.documentId}`, {
     collection: 'Abilities',
     operation: 'Create',
     docId: context.params.documentId,
@@ -185,7 +185,7 @@ exports.logAbilitiesCreateEvent = functions.region('asia-northeast1').firestore.
 exports.logAbilitiesDeleteEvent = functions.region('asia-northeast1').firestore.document('/Abilities/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> Abilities >> ${context.params.documentId}`, {
     collection: 'Abilities',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -214,7 +214,7 @@ exports.logCharacterTagsUpdateEvent = functions.region('asia-northeast1').firest
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> CharacterTags >> ${context.params.documentId}`, {
     collection: 'CharacterTags',
     operation: 'Update',
     docId: context.params.documentId,
@@ -230,7 +230,7 @@ exports.logCharacterTagsUpdateEvent = functions.region('asia-northeast1').firest
 exports.logCharacterTagsCreateEvent = functions.region('asia-northeast1').firestore.document('/CharacterTags/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> CharacterTags >> ${context.params.documentId}`, {
     collection: 'CharacterTags',
     operation: 'Create',
     docId: context.params.documentId,
@@ -244,7 +244,7 @@ exports.logCharacterTagsCreateEvent = functions.region('asia-northeast1').firest
 exports.logCharacterTagsDeleteEvent = functions.region('asia-northeast1').firestore.document('/CharacterTags/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> CharacterTags >> ${context.params.documentId}`, {
     collection: 'CharacterTags',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -337,7 +337,7 @@ exports.logCharactersUpdateEvent = functions.region('asia-northeast1').firestore
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> Characters >> ${context.params.documentId}`, {
     collection: 'Characters',
     operation: 'Update',
     docId: context.params.documentId,
@@ -353,7 +353,7 @@ exports.logCharactersUpdateEvent = functions.region('asia-northeast1').firestore
 exports.logCharactersCreateEvent = functions.region('asia-northeast1').firestore.document('/Characters/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> Characters >> ${context.params.documentId}`, {
     collection: 'Characters',
     operation: 'Create',
     docId: context.params.documentId,
@@ -367,7 +367,7 @@ exports.logCharactersCreateEvent = functions.region('asia-northeast1').firestore
 exports.logCharactersDeleteEvent = functions.region('asia-northeast1').firestore.document('/Characters/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> Characters >> ${context.params.documentId}`, {
     collection: 'Characters',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -404,7 +404,7 @@ exports.logFacilitiesUpdateEvent = functions.region('asia-northeast1').firestore
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> Facilities >> ${context.params.documentId}`, {
     collection: 'Facilities',
     operation: 'Update',
     docId: context.params.documentId,
@@ -420,7 +420,7 @@ exports.logFacilitiesUpdateEvent = functions.region('asia-northeast1').firestore
 exports.logFacilitiesCreateEvent = functions.region('asia-northeast1').firestore.document('/Facilities/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> Facilities >> ${context.params.documentId}`, {
     collection: 'Facilities',
     operation: 'Create',
     docId: context.params.documentId,
@@ -434,7 +434,7 @@ exports.logFacilitiesCreateEvent = functions.region('asia-northeast1').firestore
 exports.logFacilitiesDeleteEvent = functions.region('asia-northeast1').firestore.document('/Facilities/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> Facilities >> ${context.params.documentId}`, {
     collection: 'Facilities',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -463,7 +463,7 @@ exports.logIllustratorsUpdateEvent = functions.region('asia-northeast1').firesto
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> Illustrators >> ${context.params.documentId}`, {
     collection: 'Illustrators',
     operation: 'Update',
     docId: context.params.documentId,
@@ -479,7 +479,7 @@ exports.logIllustratorsUpdateEvent = functions.region('asia-northeast1').firesto
 exports.logIllustratorsCreateEvent = functions.region('asia-northeast1').firestore.document('/Illustrators/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> Illustrators >> ${context.params.documentId}`, {
     collection: 'Illustrators',
     operation: 'Create',
     docId: context.params.documentId,
@@ -493,7 +493,7 @@ exports.logIllustratorsCreateEvent = functions.region('asia-northeast1').firesto
 exports.logIllustratorsDeleteEvent = functions.region('asia-northeast1').firestore.document('/Illustrators/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> Illustrators >> ${context.params.documentId}`, {
     collection: 'Illustrators',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -522,7 +522,7 @@ exports.logVoiceActorsUpdateEvent = functions.region('asia-northeast1').firestor
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> VoiceActors >> ${context.params.documentId}`, {
     collection: 'VoiceActors',
     operation: 'Update',
     docId: context.params.documentId,
@@ -538,7 +538,7 @@ exports.logVoiceActorsUpdateEvent = functions.region('asia-northeast1').firestor
 exports.logVoiceActorsCreateEvent = functions.region('asia-northeast1').firestore.document('/VoiceActors/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> VoiceActors >> ${context.params.documentId}`, {
     collection: 'VoiceActors',
     operation: 'Create',
     docId: context.params.documentId,
@@ -552,7 +552,7 @@ exports.logVoiceActorsCreateEvent = functions.region('asia-northeast1').firestor
 exports.logVoiceActorsDeleteEvent = functions.region('asia-northeast1').firestore.document('/VoiceActors/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> VoiceActors >> ${context.params.documentId}`, {
     collection: 'VoiceActors',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -589,7 +589,7 @@ exports.logWeaponsUpdateEvent = functions.region('asia-northeast1').firestore.do
     fieldValues.push(newData);
   }
 
-  functions.logger.log({
+  functions.logger.log(`[UPDATE] Firestore >> Weapons >> ${context.params.documentId}`, {
     collection: 'Weapons',
     operation: 'Update',
     docId: context.params.documentId,
@@ -605,7 +605,7 @@ exports.logWeaponsUpdateEvent = functions.region('asia-northeast1').firestore.do
 exports.logWeaponsCreateEvent = functions.region('asia-northeast1').firestore.document('/Weapons/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[CREATE] Firestore >> Weapons >> ${context.params.documentId}`, {
     collection: 'Weapons',
     operation: 'Create',
     docId: context.params.documentId,
@@ -619,7 +619,7 @@ exports.logWeaponsCreateEvent = functions.region('asia-northeast1').firestore.do
 exports.logWeaponsDeleteEvent = functions.region('asia-northeast1').firestore.document('/Weapons/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Firestore >> Weapons >> ${context.params.documentId}`, {
     collection: 'Weapons',
     operation: 'Delete',
     docId: context.params.documentId,
@@ -632,7 +632,7 @@ exports.logWeaponsDeleteEvent = functions.region('asia-northeast1').firestore.do
 // Cloud Storage
 //
 exports.logStorageFinalizeEvent = functions.region('asia-northeast1').storage.object().onFinalize((metadata) => {
-  functions.logger.log({
+  functions.logger.log(`[FINALIZE] Storage  >> ${metadata.name}`, {
     operation: 'Finalize',
     metadata: metadata,
   });
@@ -640,7 +640,7 @@ exports.logStorageFinalizeEvent = functions.region('asia-northeast1').storage.ob
 });
 
 exports.logStorageDeleteEvent = functions.region('asia-northeast1').storage.object().onDelete((metadata) => {
-  functions.logger.log({
+  functions.logger.log(`[DELETE] Storage  >> ${metadata.name}`, {
     operation: 'Delete',
     metadata: metadata,
   });
