@@ -72,7 +72,7 @@ exports.logUsersUpdateEvent = functions.region('asia-northeast1').firestore.docu
     fieldValues.push(newData);
   }
 
-  functions.logger.log(`[UPDATE] Firestore >> Users >> ${context.params.documentId}`, {
+  functions.logger.log(`[UPDATE] Firestore >> Users >> ${newData.name}`, {
     collection: 'Users',
     operation: 'Update',
     docId: context.params.documentId,
@@ -88,7 +88,7 @@ exports.logUsersUpdateEvent = functions.region('asia-northeast1').firestore.docu
 exports.logUsersCreateEvent = functions.region('asia-northeast1').firestore.document('/Users/{documentId}').onCreate((snap, context) => {
   const newData = snap.data();
 
-  functions.logger.log(`[CREATE] Firestore >> Users >> ${context.params.documentId}`, {
+  functions.logger.log(`[CREATE] Firestore >> Users >> ${newData.name}`, {
     collection: 'Users',
     operation: 'Create',
     docId: context.params.documentId,
@@ -102,7 +102,7 @@ exports.logUsersCreateEvent = functions.region('asia-northeast1').firestore.docu
 exports.logUsersDeleteEvent = functions.region('asia-northeast1').firestore.document('/Users/{documentId}').onDelete((snap, context) => {
   const deleteData = snap.data();
 
-  functions.logger.log(`[DELETE] Firestore >> Users >> ${context.params.documentId}`, {
+  functions.logger.log(`[DELETE] Firestore >> Users >> ${deleteData.name}`, {
     collection: 'Users',
     operation: 'Delete',
     docId: context.params.documentId,
