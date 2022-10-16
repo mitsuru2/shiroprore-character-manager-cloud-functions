@@ -189,3 +189,60 @@ exports.logAbilitiesDeleteEvent = functions.region('asia-northeast1').firestore.
     data: deleteData,
   });
 });
+
+// ==============================================================================
+// Firestore: CharacterTags
+//
+exports.logCharacterTagsUpdateEvent = functions.region('asia-northeast1').firestore.document('/CharacterTags/{documentId}').onUpdate((snap, context) => {
+  const newData = snap.after.data();
+  const prevData = snap.before.data();
+  let fieldName = '';
+  const fieldValues = [];
+
+  if (prevData.name !== newData.name) {
+    fieldName = 'name';
+    fieldValues.push(prevData.name);
+    fieldValues.push(newData.name);
+  } else {
+    // Unexpected pattern. Log all data.
+    fieldName = 'all';
+    fieldValues.push(prevData);
+    fieldValues.push(newData);
+  }
+
+  functions.logger.log({
+    collection: 'CharacterTags',
+    operation: 'Update',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    field: fieldName,
+    prev: fieldValues[0],
+    new: fieldValues[1]});
+
+  return true;
+});
+
+exports.logCharacterTagsCreateEvent = functions.region('asia-northeast1').firestore.document('/CharacterTags/{documentId}').onCreate((snap, context) => {
+  const newData = snap.data();
+
+  functions.logger.log({
+    collection: 'CharacterTags',
+    operation: 'Create',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    data: newData,
+  });
+});
+
+exports.logCharacterTagsDeleteEvent = functions.region('asia-northeast1').firestore.document('/CharacterTags/{documentId}').onDelete((snap, context) => {
+  const deleteData = snap.data();
+
+  functions.logger.log({
+    collection: 'CharacterTags',
+    operation: 'Delete',
+    docId: context.params.documentId,
+    data: deleteData,
+  });
+});
