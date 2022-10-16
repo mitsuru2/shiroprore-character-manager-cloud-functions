@@ -367,3 +367,248 @@ exports.logCharactersDeleteEvent = functions.region('asia-northeast1').firestore
     data: deleteData,
   });
 });
+
+// ==============================================================================
+// Firestore: Facilities
+//
+exports.logFacilitiesUpdateEvent = functions.region('asia-northeast1').firestore.document('/Facilities/{documentId}').onUpdate((snap, context) => {
+  const newData = snap.after.data();
+  const prevData = snap.before.data();
+  let fieldName = '';
+  const fieldValues = [];
+
+  if (prevData.name !== newData.name) {
+    fieldName = 'name';
+    fieldValues.push(prevData.name);
+    fieldValues.push(newData.name);
+  } else if (prevData.type !== newData.type) {
+    fieldName = 'type';
+    fieldValues.push(prevData.type);
+    fieldValues.push(newData.type);
+  } else if (prevData.rarerity !== newData.rarerity) {
+    fieldName = 'rarerity';
+    fieldValues.push(prevData.rarerity);
+    fieldValues.push(newData.rarerity);
+  } else {
+    // Unexpected pattern. Log all data.
+    fieldName = 'all';
+    fieldValues.push(prevData);
+    fieldValues.push(newData);
+  }
+
+  functions.logger.log({
+    collection: 'Facilities',
+    operation: 'Update',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    field: fieldName,
+    prev: fieldValues[0],
+    new: fieldValues[1]});
+
+  return true;
+});
+
+exports.logFacilitiesCreateEvent = functions.region('asia-northeast1').firestore.document('/Facilities/{documentId}').onCreate((snap, context) => {
+  const newData = snap.data();
+
+  functions.logger.log({
+    collection: 'Facilities',
+    operation: 'Create',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    data: newData,
+  });
+});
+
+exports.logFacilitiesDeleteEvent = functions.region('asia-northeast1').firestore.document('/Facilities/{documentId}').onDelete((snap, context) => {
+  const deleteData = snap.data();
+
+  functions.logger.log({
+    collection: 'Facilities',
+    operation: 'Delete',
+    docId: context.params.documentId,
+    data: deleteData,
+  });
+});
+
+// ==============================================================================
+// Firestore: Illustrators
+//
+exports.logIllustratorsUpdateEvent = functions.region('asia-northeast1').firestore.document('/Illustrators/{documentId}').onUpdate((snap, context) => {
+  const newData = snap.after.data();
+  const prevData = snap.before.data();
+  let fieldName = '';
+  const fieldValues = [];
+
+  if (prevData.name !== newData.name) {
+    fieldName = 'name';
+    fieldValues.push(prevData.name);
+    fieldValues.push(newData.name);
+  } else {
+    // Unexpected pattern. Log all data.
+    fieldName = 'all';
+    fieldValues.push(prevData);
+    fieldValues.push(newData);
+  }
+
+  functions.logger.log({
+    collection: 'Illustrators',
+    operation: 'Update',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    field: fieldName,
+    prev: fieldValues[0],
+    new: fieldValues[1]});
+
+  return true;
+});
+
+exports.logIllustratorsCreateEvent = functions.region('asia-northeast1').firestore.document('/Illustrators/{documentId}').onCreate((snap, context) => {
+  const newData = snap.data();
+
+  functions.logger.log({
+    collection: 'Illustrators',
+    operation: 'Create',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    data: newData,
+  });
+});
+
+exports.logIllustratorsDeleteEvent = functions.region('asia-northeast1').firestore.document('/Illustrators/{documentId}').onDelete((snap, context) => {
+  const deleteData = snap.data();
+
+  functions.logger.log({
+    collection: 'Illustrators',
+    operation: 'Delete',
+    docId: context.params.documentId,
+    data: deleteData,
+  });
+});
+
+// ==============================================================================
+// Firestore: VoiceActors
+//
+exports.logVoiceActorsUpdateEvent = functions.region('asia-northeast1').firestore.document('/VoiceActors/{documentId}').onUpdate((snap, context) => {
+  const newData = snap.after.data();
+  const prevData = snap.before.data();
+  let fieldName = '';
+  const fieldValues = [];
+
+  if (prevData.name !== newData.name) {
+    fieldName = 'name';
+    fieldValues.push(prevData.name);
+    fieldValues.push(newData.name);
+  } else {
+    // Unexpected pattern. Log all data.
+    fieldName = 'all';
+    fieldValues.push(prevData);
+    fieldValues.push(newData);
+  }
+
+  functions.logger.log({
+    collection: 'VoiceActors',
+    operation: 'Update',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    field: fieldName,
+    prev: fieldValues[0],
+    new: fieldValues[1]});
+
+  return true;
+});
+
+exports.logVoiceActorsCreateEvent = functions.region('asia-northeast1').firestore.document('/VoiceActors/{documentId}').onCreate((snap, context) => {
+  const newData = snap.data();
+
+  functions.logger.log({
+    collection: 'VoiceActors',
+    operation: 'Create',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    data: newData,
+  });
+});
+
+exports.logVoiceActorsDeleteEvent = functions.region('asia-northeast1').firestore.document('/VoiceActors/{documentId}').onDelete((snap, context) => {
+  const deleteData = snap.data();
+
+  functions.logger.log({
+    collection: 'VoiceActors',
+    operation: 'Delete',
+    docId: context.params.documentId,
+    data: deleteData,
+  });
+});
+
+// ==============================================================================
+// Firestore: Weapons
+//
+exports.logWeaponsUpdateEvent = functions.region('asia-northeast1').firestore.document('/Weapons/{documentId}').onUpdate((snap, context) => {
+  const newData = snap.after.data();
+  const prevData = snap.before.data();
+  let fieldName = '';
+  const fieldValues = [];
+
+  if (prevData.name !== newData.name) {
+    fieldName = 'name';
+    fieldValues.push(prevData.name);
+    fieldValues.push(newData.name);
+  } else if (prevData.type !== newData.type) {
+    fieldName = 'type';
+    fieldValues.push(prevData.type);
+    fieldValues.push(newData.type);
+  } else if (prevData.rarerity !== newData.rarerity) {
+    fieldName = 'rarerity';
+    fieldValues.push(prevData.rarerity);
+    fieldValues.push(newData.rarerity);
+  } else {
+    // Unexpected pattern. Log all data.
+    fieldName = 'all';
+    fieldValues.push(prevData);
+    fieldValues.push(newData);
+  }
+
+  functions.logger.log({
+    collection: 'Weapons',
+    operation: 'Update',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    field: fieldName,
+    prev: fieldValues[0],
+    new: fieldValues[1]});
+
+  return true;
+});
+
+exports.logWeaponsCreateEvent = functions.region('asia-northeast1').firestore.document('/Weapons/{documentId}').onCreate((snap, context) => {
+  const newData = snap.data();
+
+  functions.logger.log({
+    collection: 'Weapons',
+    operation: 'Create',
+    docId: context.params.documentId,
+    updatedAt: newData.updatedAt.toDate().toISOString(),
+    updatedBy: newData.updatedBy,
+    data: newData,
+  });
+});
+
+exports.logWeaponsDeleteEvent = functions.region('asia-northeast1').firestore.document('/Weapons/{documentId}').onDelete((snap, context) => {
+  const deleteData = snap.data();
+
+  functions.logger.log({
+    collection: 'Weapons',
+    operation: 'Delete',
+    docId: context.params.documentId,
+    data: deleteData,
+  });
+});
+
